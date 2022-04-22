@@ -16,6 +16,7 @@ public class TicketManager {
     private static Button buttonClaim = Button.secondary("claim", "Claim").withEmoji(Emoji.fromUnicode("\uD83D\uDD12"));
     private static Button buttonClose = Button.secondary("close", "Close").withEmoji(Emoji.fromUnicode("\uD83D\uDCA2"));
 
+
     private static Button buttonCreate = Button.secondary("create", "Create Ticket").withEmoji(Emoji.fromUnicode("\uD83D\uDCE9"));
 
     public static void createTicket(Member member) {
@@ -96,6 +97,7 @@ public class TicketManager {
         if (isTeam(member)) {
 
             setPermissionsRole(false, Ticket.getTeamRole(), channel);
+            setPermissionsUser(true, member, channel);
 
             EmbedBuilder builder = new EmbedBuilder();
             builder.setAuthor("The user " + member.getUser().getAsTag() + " is now processing your ticket!", null, member.getEffectiveAvatarUrl());

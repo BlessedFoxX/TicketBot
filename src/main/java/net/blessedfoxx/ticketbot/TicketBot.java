@@ -31,7 +31,7 @@ public class TicketBot {
     public TicketBot() throws LoginException, IllegalArgumentException {
         INSTANCE = this;
 
-        JDABuilder builder = JDABuilder.createDefault("TOKEN HERE");
+        JDABuilder builder = JDABuilder.createDefault("TOKEN");
 
         builder.setActivity(Activity.playing("your Mum!"));
         builder.setStatus(OnlineStatus.IDLE);

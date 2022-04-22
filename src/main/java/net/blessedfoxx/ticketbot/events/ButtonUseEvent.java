@@ -25,7 +25,7 @@ public class ButtonUseEvent extends ListenerAdapter {
         }else if (button.getId().equalsIgnoreCase("create")) {
 
             if (member != null)
-                if (TicketManager.isTicketBanned(member)) {
+                if (!TicketManager.isTicketBanned(member)) {
                     TicketManager.createTicket(member);
                     event.getInteraction().deferReply(true).setContent(":white_check_mark: Your ticket " + TicketManager.getTicketChannel().getAsMention() + " has been created!").queue();
                 }else{

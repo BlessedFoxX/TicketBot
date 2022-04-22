@@ -1,5 +1,6 @@
 package net.blessedfoxx.ticketbot;
 
+import net.blessedfoxx.ticketbot.commands.AddRoleCommand;
 import net.blessedfoxx.ticketbot.commands.TicketCommand;
 import net.blessedfoxx.ticketbot.commands.setTicketCommand;
 import net.blessedfoxx.ticketbot.commands.type.ServerCommand;
@@ -20,6 +21,7 @@ public class CommandManager {
 
         this.commands.put("ticket", new TicketCommand());
         this.commands.put("setticket", new setTicketCommand());
+        this.commands.put("addrole", new AddRoleCommand());
 
     }
 
