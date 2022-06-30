@@ -2,9 +2,9 @@
 This is a Java Developed Ticket System by Angekotzter#8677
 
 ```
->👨🏻‍💻 Developer: Sebastian Zängler
->⌛ Version: 2.0
->👯 Partner: conri.se/blessedfoxx
+👨🏻‍💻 Developer: Sebastian Zängler
+⌛ Version: 2.0
+👯 Partner: conri.se/blessedfoxx
 ```
 
 **⚒️ SetupFile: applicaiton.properties**
