@@ -1,7 +1,7 @@
 # TicketBot
 This is a Java Developed Ticket System by Angekotzter#8677
 
-**Setup applicaiton.properties**
+**⚒️ SetupFile: applicaiton.properties**
 ```
 bot.token=<TOKEN>
 bot.categoryGroup=<ID>
