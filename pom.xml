@@ -12,6 +12,11 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+        <quarkus.version>1.4.1.Final</quarkus.version>
+        <maven.compiler.source>16</maven.compiler.source>
+        <maven.compiler.target>16</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <repositories>
@@ -28,6 +33,19 @@
             <artifactId>JDA</artifactId>
             <version>5.0.0-alpha.9</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.9.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>me.tongfei</groupId>
+            <artifactId>progressbar</artifactId>
+            <version>0.9.3</version>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -62,4 +80,5 @@
             </plugin>
         </plugins>
     </build>
+
 </project>

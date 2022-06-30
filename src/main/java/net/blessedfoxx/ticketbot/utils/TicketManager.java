@@ -1,11 +1,19 @@
+/*
+ *        ╭━━━━╮╱╱╭╮╱╱╱╱╭╮╱╭━━╮╭━━━┳━━━━╮
+ *        ┃╭╮╭╮┃╱╱┃┃╱╱╱╭╯╰╮┃╭╮┃┃╭━╮┃╭╮╭╮┃
+ *        ╰╯┃┃┣╋━━┫┃╭┳━┻╮╭╯┃╰╯╰┫┃╱┃┣╯┃┃╰╯
+ *        ╱╱┃┃┣┫╭━┫╰╯┫┃━┫┃╱┃╭━╮┃┃╱┃┃╱┃┃
+ *        ╱╱┃┃┃┃╰━┫╭╮┫┃━┫╰╮┃╰━╯┃╰━╯┃╱┃┃
+ *        ╱╱╰╯╰┻━━┻╯╰┻━━┻━╯╰━━━┻━━━╯╱╰╯
+ *
+ *       Copyright (C) 2022 - 2026 BlessedFoxX
+ */
 package net.blessedfoxx.ticketbot.utils;
 
+import net.blessedfoxx.ticketbot.TicketBot;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.Permission;
-import net.dv8tion.jda.api.entities.Emoji;
-import net.dv8tion.jda.api.entities.Member;
-import net.dv8tion.jda.api.entities.Role;
-import net.dv8tion.jda.api.entities.TextChannel;
+import net.dv8tion.jda.api.entities.*;
 import net.dv8tion.jda.api.events.interaction.component.ButtonInteractionEvent;
 import net.dv8tion.jda.api.interactions.components.buttons.Button;
 import net.dv8tion.jda.api.utils.TimeFormat;
@@ -19,27 +27,57 @@ public class TicketManager {
 
     private static Button buttonCreate = Button.secondary("create", "Create Ticket").withEmoji(Emoji.fromUnicode("\uD83D\uDCE9"));
 
+    public static void createTicket(Member member, ButtonInteractionEvent event) {
+
+        if (!Ticket.getCategory().getTextChannels().contains(TicketBot.getJda().getTextChannelsByName("ticket-" + member.getUser().getAsTag().replaceAll("#" , "♯"), true))) {
+
+            ticketChannel = Ticket.getCategory().createTextChannel("ticket-" + member.getUser().getAsTag().replaceAll("#", "♯")).complete();
+
+            setPermissionsRole(false, Ticket.getEveryoneRole(), ticketChannel);
+            setPermissionsRole(true, Ticket.getTeamRole(), ticketChannel);
+            setPermissionsUser(true, member, ticketChannel);
+
+            EmbedBuilder builder = new EmbedBuilder();
+            builder.setDescription(":interrobang: Your ticket will be processed shortly! Please send us your request so that we can offer you better support.");
+            builder.setThumbnail(member.getEffectiveAvatarUrl());
+            builder.addField(":timer: _*Created at:*_", String.valueOf(TimeFormat.RELATIVE.now()), true);
+            builder.addField(":bust_in_silhouette: _*Created by:*_", member.getUser().getAsTag(), true);
+
+
+            ticketChannel.sendMessage("The " + Ticket.getTeamRole().getAsMention() + " has been notified!")
+                    .setEmbeds(builder.build())
+                    .setActionRow(buttonClaim.asEnabled(),
+                            buttonClose.asEnabled())
+                    .queue();
+        }else{
+            event.deferReply().setEphemeral(true).setContent(":x: You are already in a Ticket! :x:").queue();
+        }
+
+    }
+
     public static void createTicket(Member member) {
 
-        ticketChannel = Ticket.getCategory().createTextChannel("ticket-" + member.getUser().getAsTag().replaceAll("#" , "♯")).complete();
+        if (!Ticket.getCategory().getTextChannels().contains(TicketBot.getJda().getTextChannelsByName("ticket-" + member.getUser().getAsTag().replaceAll("#" , "♯"), true))) {
 
-        setPermissionsRole(false, Ticket.getEveryoneRole(), ticketChannel);
-        setPermissionsRole(true, Ticket.getTeamRole(), ticketChannel);
-        setPermissionsUser(true, member, ticketChannel);
+            ticketChannel = Ticket.getCategory().createTextChannel("ticket-" + member.getUser().getAsTag().replaceAll("#", "♯")).complete();
 
-        EmbedBuilder builder = new EmbedBuilder();
-        builder.setDescription(":interrobang: Your ticket will be processed shortly! Please send us your request so that we can offer you better support.");
-        builder.setThumbnail(member.getEffectiveAvatarUrl());
-        builder.addField(":timer: _*Created at:*_", String.valueOf(TimeFormat.RELATIVE.now()), true);
-        builder.addField(":bust_in_silhouette: _*Created by:*_", member.getUser().getAsTag(), true);
+            setPermissionsRole(false, Ticket.getEveryoneRole(), ticketChannel);
+            setPermissionsRole(true, Ticket.getTeamRole(), ticketChannel);
+            setPermissionsUser(true, member, ticketChannel);
+
+            EmbedBuilder builder = new EmbedBuilder();
+            builder.setDescription(":interrobang: Your ticket will be processed shortly! Please send us your request so that we can offer you better support.");
+            builder.setThumbnail(member.getEffectiveAvatarUrl());
+            builder.addField(":timer: _*Created at:*_", String.valueOf(TimeFormat.RELATIVE.now()), true);
+            builder.addField(":bust_in_silhouette: _*Created by:*_", member.getUser().getAsTag(), true);
 
 
-
-        ticketChannel.sendMessage("The " + Ticket.getTeamRole().getAsMention() + " has been notified!")
-                .setEmbeds(builder.build())
-                .setActionRow(buttonClaim.asEnabled(),
-                        buttonClose.asEnabled())
-                .queue();
+            ticketChannel.sendMessage("The " + Ticket.getTeamRole().getAsMention() + " has been notified!")
+                    .setEmbeds(builder.build())
+                    .setActionRow(buttonClaim.asEnabled(),
+                            buttonClose.asEnabled())
+                    .queue();
+        }
 
     }
 

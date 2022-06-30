@@ -1,3 +1,13 @@
+/*
+ *        ╭━━━━╮╱╱╭╮╱╱╱╱╭╮╱╭━━╮╭━━━┳━━━━╮
+ *        ┃╭╮╭╮┃╱╱┃┃╱╱╱╭╯╰╮┃╭╮┃┃╭━╮┃╭╮╭╮┃
+ *        ╰╯┃┃┣╋━━┫┃╭┳━┻╮╭╯┃╰╯╰┫┃╱┃┣╯┃┃╰╯
+ *        ╱╱┃┃┣┫╭━┫╰╯┫┃━┫┃╱┃╭━╮┃┃╱┃┃╱┃┃
+ *        ╱╱┃┃┃┃╰━┫╭╮┫┃━┫╰╮┃╰━╯┃╰━╯┃╱┃┃
+ *        ╱╱╰╯╰┻━━┻╯╰┻━━┻━╯╰━━━┻━━━╯╱╰╯
+ *
+ *       Copyright (C) 2022 - 2026 BlessedFoxX
+ */
 package net.blessedfoxx.ticketbot.utils;
 
 import net.blessedfoxx.ticketbot.CommandManager;
@@ -14,12 +24,18 @@ public class Ticket {
     private static String ticketBanned = ":x: You are Ticket Banned!";
     private static String noMemberFound = ":interrobang: The user was not found!";
 
-    private static Guild guild = TicketBot.getJda().getGuildById("959936404425687120");
-    private static Category category = guild.getCategoryById("962012288959803452");
+    public static String guildID = PropertiesConfig.getGuildID;
+    public static String categoryID = PropertiesConfig.getCategory;
+    public static String teamRoleID = PropertiesConfig.getTeamRole;
+    public static String everyoneRoleID = PropertiesConfig.getEveryoneRole;
+    public static String bannedRoleID = PropertiesConfig.getBannedRole;
 
-    private static Role teamRole = guild.getRoleById("960928085472051211");
-    private static Role everyoneRole = guild.getRoleById("959936404425687120");
-    private static Role bannedRole = guild.getRoleById("962012596926554112");
+    private static Guild guild = TicketBot.getJda().getGuildById(guildID);
+    private static Category category = guild.getCategoryById(categoryID);
+
+    private static Role teamRole = guild.getRoleById(teamRoleID);
+    private static Role everyoneRole = guild.getRoleById(everyoneRoleID);
+    private static Role bannedRole = guild.getRoleById(bannedRoleID);
 
     public static String getNotInTicket() {
         return notInTicket;
@@ -56,5 +72,4 @@ public class Ticket {
     public static void Usage(TextChannel channel, String usage) {
         channel.sendMessage(":interrobang: Usage: `" + CommandManager.getPrefix() + usage + "`").queue();
     }
-
 }

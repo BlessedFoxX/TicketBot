@@ -1,3 +1,13 @@
+/*
+ *        ╭━━━━╮╱╱╭╮╱╱╱╱╭╮╱╭━━╮╭━━━┳━━━━╮
+ *        ┃╭╮╭╮┃╱╱┃┃╱╱╱╭╯╰╮┃╭╮┃┃╭━╮┃╭╮╭╮┃
+ *        ╰╯┃┃┣╋━━┫┃╭┳━┻╮╭╯┃╰╯╰┫┃╱┃┣╯┃┃╰╯
+ *        ╱╱┃┃┣┫╭━┫╰╯┫┃━┫┃╱┃╭━╮┃┃╱┃┃╱┃┃
+ *        ╱╱┃┃┃┃╰━┫╭╮┫┃━┫╰╮┃╰━╯┃╰━╯┃╱┃┃
+ *        ╱╱╰╯╰┻━━┻╯╰┻━━┻━╯╰━━━┻━━━╯╱╰╯
+ *
+ *       Copyright (C) 2022 - 2026 BlessedFoxX
+ */
 package net.blessedfoxx.ticketbot.events;
 
 import net.blessedfoxx.ticketbot.utils.Ticket;
@@ -26,7 +36,7 @@ public class ButtonUseEvent extends ListenerAdapter {
 
             if (member != null)
                 if (!TicketManager.isTicketBanned(member)) {
-                    TicketManager.createTicket(member);
+                    TicketManager.createTicket(member, event);
                     event.getInteraction().deferReply(true).setContent(":white_check_mark: Your ticket " + TicketManager.getTicketChannel().getAsMention() + " has been created!").queue();
                 }else{
                     event.getInteraction().deferReply(true).setContent(Ticket.getTicketBanned()).queue();
