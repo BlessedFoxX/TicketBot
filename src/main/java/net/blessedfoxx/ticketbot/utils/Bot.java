@@ -28,10 +28,6 @@ public class Bot {
                 uptimeDAYS, uptimeHRS, uptimeMIN, uptimeSEC);
     }
 
-    public static String TOKEN = "OTU5MzU1MjU2MzcyODY3MDg0.YkarNQ.OvuRlGXre0XWM1es447apnt1YjA";
-
-    public static String TestTOKEN = "OTUwMDg5NTM2MjkyMTQzMTE1.YiT11Q.0U1E3GoEC1GnOfyZ_hl5kGTUOso";
-
     public static final String ANSI_RESET = "\u001B[0m";
     public static final String ANSI_BLACK = "\u001B[30m";
     public static final String ANSI_RED = "\u001B[31m";
