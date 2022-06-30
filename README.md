@@ -1,6 +1,6 @@
 # TicketBot
 
-**👨🏻‍🚀 About us:**
+**👨🏻‍🚀  About us:**
 
 ```
 👨🏻‍💻 Developer: Sebastian Zängler (Angekotzter#8677)
