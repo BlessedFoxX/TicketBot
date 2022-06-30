@@ -20,5 +20,5 @@ bot.bannedRole=<ID>
 
 ![Console](https://cdn.discordapp.com/attachments/991022985844494366/991850305601941514/unknown.png)
 
-#🆘 Support
+# 🆘 Support:
 https://discord.gg/duhkBkJJQh
