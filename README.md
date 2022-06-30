@@ -1,8 +1,9 @@
 # TicketBot
-This is a Java Developed Ticket System by Angekotzter#8677
+
+**👨🏻‍🚀 About us:**
 
 ```
-👨🏻‍💻 Developer: Sebastian Zängler
+👨🏻‍💻 Developer: Sebastian Zängler (Angekotzter#8677)
 ⌛ Version: 2.0
 👯 Partner: conri.se/blessedfoxx
 ```
