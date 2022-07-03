@@ -6,6 +6,7 @@
 👨🏻‍💻 Developer: Sebastian Zängler (Angekotzter#8677)
 ⌛ Version: 2.0
 👯 Partner: conri.se/blessedfoxx
+   Official Partner for Cloud Hosting!
 ```
 
 **⚒️ SetupFile: applicaiton.properties**
